@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const mongoDB = 'mongodb://localhost/NodeFilesGestorDeArchivos';
+import mongoose from 'mongoose';
+import { MONGODB } from '../config.js';
+const mongoDB = MONGODB;
 
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 

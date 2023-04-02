@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,26 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="text-center">Administrador de archivos</h1>
+    <div class="container">
+
+        <div class="page-header text-center"></div>
+            <h1><span class="fa fa-lock"></span> GESTOR DE ARCHIVOS</h1>
+            <a href="/logout" class="btn btn-default btn-sm"> Logout</a>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="well h3 text-danger"><span class="fa fa-google-plus"></span> </div>
+    
+                <p>
+                    <strong>email</strong>:<%=email%> <br>
+                    <strong>name</strong>:<%=name%> <br>
+                    <strong>pic</strong>:<img src="<%=pic%>" width="100">
+    
+    
+                </p>
+    
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>

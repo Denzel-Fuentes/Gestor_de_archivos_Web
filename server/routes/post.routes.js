@@ -2,15 +2,14 @@
 import { Router } from "express";
 const router = Router();
 
-router.get('/login',(req,res)=>{
-    res.render('login');
+router.get('/login:type',(req,res)=>{
+    const {type} = req.params;
+    console.log(type)
+    if (type === ":createUser") {
+        res.render('login',{login:'register',register:'login'});
+    }else{res.render('login',{login:'login',register:'register'});}
+    
 });
-
-
-router.get('/createUser',(req,res)=>{
-    res.render('CreateUser');
-});
-
 router.get('Administrador',(req,res)=>{
     res.render('index');
 })
