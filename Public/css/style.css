@@ -1,0 +1,253 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.web {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/**********Clases Genericas**********/
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/*********Diseño del Sitio***********/
+/********* Head ***********/
+.head {
+    border-bottom: 1px solid #0000004d;
+    background-color: #fdfdfdfa;
+    position: sticky;
+    top: 0;
+}
+
+.head_content {
+    width: calc(100% - 24%);
+    margin-inline: 12%;
+    padding-block: 0.5rem;
+}
+
+.head_content_logo {
+    width: 20%;
+}
+
+.head_content .head_img {
+    width: 20%;
+}
+
+.head_content_logo .head_name {
+    margin: 0;
+    font-size: 2rem;
+    align-self: center;
+}
+
+.head_content_web {
+    width: 65%;
+}
+
+.head_content_web_list {
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+.head_content_web_list .link {
+    text-decoration: none;
+    font-size: 1.10rem;
+    color: #000000;
+}
+
+.head_content_user {
+    width: 25%;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1vw;
+}
+
+.head_content_user .user {
+    background-color: #4098DF;
+    padding: 2% 4%;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    border: none;
+    color: #ffffff;
+}
+
+.head_content_user .user:hover {
+    background-color: #79bffd;
+    cursor: pointer;
+    color: #000000;
+}
+
+/********* Main ***********/
+section {
+    scroll-margin-top: 70px;
+    padding-inline: 12%;
+    padding-bottom: 3%;
+}
+
+/******* Home *********/
+.home {
+    height: 95vh;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.home_text {
+    height: 100%;
+    width: 50%;
+    justify-content: start;
+    padding-top: 12rem;
+    gap: 1rem;
+}
+
+.home_text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+}
+
+.home_text p {
+    font-size: 1.3rem;
+}
+
+.home_text a,
+.contact_form button{
+    background-color: #4097E0;
+    color: #000000;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    align-self: center;
+    border-radius: 0.5rem;
+}
+
+.home_text a:hover,
+.contact_form button:hover {
+    text-decoration: none;
+    background-color: #000000;
+    font-size: 1.3rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.home img {
+    width: 50%;
+    align-self: center;
+}
+
+/******* About and Comunity *********/
+.about_text,
+.comunity_text {
+    width: 70%;
+    order: 1;
+    justify-content: start;
+    font-size: 1.2vw;
+}
+
+.about_img,
+.comunity_img {
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+.about_img img,
+.comunity_img img {
+    width: 85%;
+}
+
+.comunity_img {
+    order: 1;
+}
+
+/******* Contact *********/
+.parent{
+    min-height: calc(100vh - 70px);
+    padding: 0;
+    background-image: url("../img/contact.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.contact{
+    width: 100%;
+    background-color: #000000b3;
+}
+.contact_head {
+    align-items: center;
+    padding-bottom: 2rem;
+    font-size: 1.5vw;
+    color: #fdfdfde6;
+}
+.contact_head h2{
+    margin-bottom: 0;
+}
+.contact_body {
+    color: #fdfdfde6;
+    width: 100%;
+    padding-inline: 12%;
+    padding-bottom: 2rem;
+    flex-grow: 1;
+}
+.contact_form {
+    gap: 1rem;
+    width: 100%;
+    padding-inline: 18vw;
+    justify-content: space-evenly;
+}
+.contact_form label,
+.contact_form input,
+.contact_form textarea{
+    font-size: 1vw;
+    border-radius: 5px;
+}
+.contact_form input{
+    height: 2rem;
+    background-color: #dcdcdc;
+}
+.contact_form textarea {
+    resize: vertical;
+    background-color: #dcdcdc;
+}
+.contact_form button{
+    padding: 0.3vw 2vw;
+    border-radius: 10px;
+    border: none;
+}
+.contact_form button:hover{
+    background-color:#fdfdfde6;
+    padding: 0.3vw 2vw;
+    border-radius: 10px;
+    border: none;
+    color: #000000;
+}
+/******* Footer *********/
+footer{
+    border-top: 1px solid #fdfdfde6;
+    background-color: #000000e6;
+    padding-block: 1.5vw;
+    color: #ffffff;
+    justify-content: center;
+}
