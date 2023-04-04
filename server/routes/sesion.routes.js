@@ -1,25 +1,15 @@
-import passport from "passport";
+
 import { Router } from "express";
+import { Google,GoogleAu,RespuestaGoogle ,EnviarDatosUser } from "../controllers/sesionGoogle.js";
+
 const router = Router();
 
-router.get('/success',(req,res)=>{
-        console.log(req.session.passport.user.picture)
-        const email = req.session.passport.user.email
-        const name = req.session.passport.user.displayName
-        const pic = req.session.passport.user.picture
-        res.render('index',
-        {name:name,
-        email:email,   
-        pic:pic});
-   
-   
-})
-router.get('/google', passport.authenticate('google', { scope:[ 'profile','email']}));
+//Iniciar session con google
+router.get('/success',EnviarDatosUser);
+router.get('/google',Google );
+router.get('/google/callback',GoogleAu,RespuestaGoogle);
 
-router.get('/google/callback',passport.authenticate
-('google',{failureRedirect:'/failed'}),function(req,res){
-      res.redirect('/success')
-    //Successful authentication , redirect home
-})
+//Crear Cuenta
+
 
 export default router;
