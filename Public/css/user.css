@@ -1,0 +1,213 @@
+@import url(./style.css);
+.oculto{
+    display: none;
+}
+/********** User **********/
+.user {
+    display: grid;
+    grid-template: 70px 1fr/25% 1fr;
+    height: 100vh;
+    grid-template-areas:
+        "user_head user_head"
+        "user_nav user_body";
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: #F7F9FC;
+}
+
+.user>* {
+    border-radius: 10px;
+}
+
+/********** User Head **********/
+.user_head {
+    background-color: inherit;
+    grid-area: user_head;
+}
+
+.head_home {
+    width: 25%;
+    justify-content: center;
+}
+
+.head_home .head_name {
+    margin: 0;
+    font-size: 1.5rem;
+    align-self: center;
+}
+
+.head_text {
+    font-size: 0.8rem;
+    flex-grow: 1;
+    justify-content: center;
+    align-content: center;
+}
+
+.head_profile {
+    width: 25%;
+    justify-content: center;
+}
+
+.head_profile div,
+a {
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.head_profile:hover{
+    cursor: pointer;
+}
+.head_profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #646464;
+}
+
+.head_profile .profile_name,
+a {
+    font-size: 2.2vw;
+    color: #000000;
+}
+
+.head_profile .profile_name:after {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 7px;
+    background: url(https://app.aluracursos.com/assets/images/header/arrow-down.svg) no-repeat 50%;
+    margin-left: 10px;
+}
+.head_profile .profile_option{
+    background-color: #ffffff;
+    position: absolute;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 0.5rem;
+    top: 80px;
+    right: 30px;
+    width: 200px;
+    border-radius: 1rem;
+    box-shadow: #0000003d 0px 3px 8px 3px;
+}
+.head_profile .profile_option a{
+    font-size: 1.1rem;
+}
+.head_profile .profile_option .exit_login{
+    color: #ff0000;
+}
+.head_profile .profile_option .exit_login img,
+.head_profile .profile_option .profile_view img{
+    border: none;
+    width: 2rem;
+    border-radius: 0;
+}
+.head_profile .profile_option .exit_login img{
+    filter: hue-rotate();
+}
+/********** User Nav **********/
+.user_nav {
+    background-color: inherit;
+    grid-area: user_nav;
+    padding: 1rem;
+}
+.user_nav .new_file{
+    background-color: #6CB3F4;
+    border-radius: 1rem;
+    color: #ffffff;
+    padding: 1rem;
+    text-align: center;
+}
+.user_nav .type_file{
+    background-color: #cfe8ff;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: #000000;
+    border-bottom: 1px solid #00000066;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+.new_file, 
+.type_file{
+    animation: transform 500ms linear;
+}
+.new_file:hover, 
+.type_file:hover{
+    transform: scale(1.05);
+}
+/******* User Body *********/
+.user_body {
+    background-color: #ffffff;
+    grid-area: user_body;
+    padding: 1rem;
+}
+.user_body ul{
+    margin: 0;
+    padding: 0;
+}
+h4{
+    margin: 0;
+    padding-block: 0.5rem;
+}
+.user_body li{
+    display: flex;
+    list-style: none;
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+    align-items: center;
+}
+.user_body .name{
+    padding: 0.5rem;
+    flex-basis: 50%;
+    align-items: center;
+}
+.user_body .name > img{
+    width: 40px;
+    margin-right: 0.5rem;
+}
+.user_body .name > img:hover{
+    cursor: pointer;
+}
+.user_body .date{
+    flex-basis: 30%;
+}
+.user_body .type{
+    flex-basis: 20%;
+}
+@media only screen and (min-width: 1200px) {
+    .user {
+        grid-template-columns: 13% 1fr;
+    }
+    .head_home {
+        width: 13%;
+    }
+    .head_profile{
+        width: 10%;
+    }
+    .head_home .head_name {
+        font-size: 2rem;
+    }
+    .head_text {
+        font-size: initial;
+    }
+
+    .head_profile .profile_name,
+    a {
+        font-size: 1.1vw;
+    }
+    .head_profile .profile_option{
+        width: 300px;
+        align-items: center;
+    }
+    .user_body .name{
+        flex-basis: 60%;
+    }
+    .user_body .date{
+        flex-basis: 30%;
+    }
+    .user_body .type{
+        flex-basis: 10%;
+    }
+}
