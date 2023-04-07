@@ -12,6 +12,6 @@ router.get('/google/callback',GoogleAu,RespuestaGoogle);
 //Crear Cuenta
 router.post('/createUser',(req,res)=>{createUser(req.body); res.sendStatus(200)});
 //Iniciar Sesion
-router.post('/login',findUserById);
+router.post('/login:login',findUserById);
 
 export default router;

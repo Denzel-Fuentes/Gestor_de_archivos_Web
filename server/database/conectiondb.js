@@ -10,7 +10,7 @@ db.once('open', function() {
 }); */
 export async function connectDB (){
   try {
-      const db = await mongoose.connect(MONGODB);
+      const db = await mongoose.connect(MONGODB,{useNewUrlParser:true});
       console.log('connected to', db.Connection.name);
   } catch (error) {
       console.log(error)

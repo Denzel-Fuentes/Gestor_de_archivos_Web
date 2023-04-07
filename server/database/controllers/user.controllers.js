@@ -18,7 +18,6 @@ const User = mongoose.model('User', userSchema);
 
 // CRUD functions para la colección "User"
 export const createUser=async function (user) {
-  console.log(user)
   const email =await User.findOne({email:user.email})
   if(email){
     console.log("El correo ya esta registrado")
@@ -36,17 +35,19 @@ export const createUser=async function (user) {
   }
 }
 
-export const findUserById =async function (req,res) {
-  const password =await User.findOne({password:req.body.password}).exec()
-  if(password){
-    const email = req.body.email
-    const name =  req.body.given_name
+export const findUserById =async function (req,res,next) {
+  const query =await User.findOne({password:req.body.password}).exec()
+  console.log(query)
+  if(query){
+    const email = query.email;
+    const name =  query.name;
     res.render('index',
     {name:name,
-    email:email,   
+    email:email,
+    pic:""   
     });
   }else{
-    res.json({msg:"El usuario no esta creado"});
+    res.redirect('/login:login#')
   }
 }
 
