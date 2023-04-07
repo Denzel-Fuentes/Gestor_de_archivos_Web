@@ -1,5 +1,6 @@
 // Aqui declararemos las rutas  y los metodos GET POS PUT ....
 import { Router } from "express";
+import { createFile } from "../database/controllers/files.controllers.js";
 const router = Router();
 
 router.get('/login:type',(req,res)=>{
@@ -13,5 +14,9 @@ router.get('/login:type',(req,res)=>{
 router.get('Administrador',(req,res)=>{
     res.render('index');
 })
+
+router.get('/Archivo');
+router.post('/Archivo',createFile);
+router.get('/book/:id');
 
 export default router;

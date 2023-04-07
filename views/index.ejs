@@ -27,6 +27,23 @@
                 </p>
     
             </div>
+            <div class="col-sm-6">
+                  <div>
+                    <h1>Carga de Archivos</h1>
+                    <form action="/Archivo" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file"  multiple="false" id="leftimage">
+                        <input type="text" name="text"  multiple="false" id="lef">
+
+                        <br>
+                        <input type="submit" value="Confirmar">
+                    </form>
+                    
+                  </div>
+                  <div>
+                    <h1>Functions</h1>
+                    <input type="button" value="MERGE" id="mergeButton" onclick="doMesh()">
+                  </div>
+            </div>
         </div>
 
     </div>

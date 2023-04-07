@@ -5,6 +5,7 @@ import { GOOGLE_CLIENT_SECRET } from "./config.js";
 import cookieSession  from 'cookie-session';
 import passport from "passport";
 import  session from 'express-session' ;
+import fileUpload from "express-fileupload";
 
 const app = express()
 //configuracion de ejs
@@ -12,6 +13,10 @@ app.set("view engine","ejs")
 
 //middleware
 app.use(express.json());
+app.use(fileUpload());
+//convierte la informacion recibida en un objeto
+app.use(express.urlencoded({extended: true}));
+
 import  './passport-setup.js';
 
 //Configuracion para  el inicio de sesion

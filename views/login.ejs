@@ -13,20 +13,21 @@
 <body>
   <div class="login-page">
     <div class="form">
-      <form class="<%=register%>-form">
-        <input type="text" placeholder="name"/>
-        <input type="password" placeholder="password"/>
-        <input type="text" placeholder="email address"/>
-        <button class="btn-enviar">create</button>
+      <form action="/createUser" method="POST" enctype="application/x-www-form-urlencoded" class="<%=register%>-form">
+        <input type="text" placeholder="name" name="given_name" />
+        <input type="text" placeholder="lastname" name="family_name" />
+        <input type="password" placeholder="password" name="password"/>
+        <input type="text" placeholder="email address" name="email"/>
+        <input class="btn-enviar" type="submit" value="Create" style="background:green;">
         <button onclick="window.location.href='/google'" type="button" class="login-with-google-btn" >
           Sign in with Google
         </button>
         <p class="message">Already registered? <a href="#">Sign In</a></p>
       </form>
-      <form class="<%=login%>-form">
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
-        <button class="btn-enviar">login</button>
+      <form action="/login" method="POST" enctype="application/x-www-form-urlencoded" class="<%=login%>-form">
+        <input type="text" placeholder="username" name="given_name"/>
+        <input type="password" placeholder="password" name="password"/>
+        <input class="btn-enviar" style="background:green;" type="submit" value="login">
         <button type="button" onclick="window.location.href='/google'" class="login-with-google-btn" >
           Sign in with Google
         </button>

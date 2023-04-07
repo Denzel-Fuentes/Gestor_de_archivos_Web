@@ -1,40 +1,41 @@
 //Aqui pondremos el Crud para controlar los files
 import mongoose from 'mongoose';
-const url = 'mongodb://localhost/NodeFilesGestorDeArchivos';
 
 // Definir el schema para la colección "File"
 const fileSchema = new mongoose.Schema({
-  filename: { type: String, required: true },
+/*   filename: { type: String, required: true },
   filetype: { type: String, required: true },
   date: { type: Date, default: Date.now },
   size: { type: Number, required: true },
-  id_user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  id_user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, */
+  data:Buffer,
 });
 
 // Definir el modelo para la colección "File"
 const File = mongoose.model('File', fileSchema);
 
 // CRUD functions para la colección "File"
-function createFile(file) {
-  const newFile = new File(file);
-  return newFile.save();
+
+export const createFile =async function (req,res) {
+  // recibimos el objeto con los datos del archivo
+  let file = req.files.file;
+  let data = file.data;
+  console.log(file)
+  const newFile = new File({data})
+  await newFile.save();
+  //console.log(newFile);
+  res.sendStatus(200);
 }
 
-function findFileById(fileId) {
+export const findFileById =function (fileId) {
   return File.findById(fileId).exec();
 }
 
-function updateFile(fileId, updatedFile) {
+export const updateFile=function(fileId, updatedFile) {
   return File.findByIdAndUpdate(fileId, updatedFile, { new: true }).exec();
 }
 
-function deleteFile(fileId) {
+export const deleteFile=function (fileId) {
   return File.findByIdAndDelete(fileId).exec();
 }
 
-module.exports = {
-  createFile,
-  findFileById,
-  updateFile,
-  deleteFile
-};
