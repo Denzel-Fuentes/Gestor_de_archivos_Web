@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/user.css">
+    <Title>NodeFile</Title>
+</head>
+
+<body>
+    <div class="user">
+        <div class="user_head flex">
+            <div class="head_home flex">
+                <h3 class="head_name">Node</h3>
+                <img class="head_img" src="../img/logo.webp" alt="logo">
+            </div>
+            <div class="flex head_text">
+                <h1>DASHBOARD</h1>
+            </div>
+            <div id="profile" class="flex head_profile">
+                <div class="flex">
+                    <img src="../img/comunity.png" alt="profile">
+                    <span class="profile_name">Patito</span>
+                </div>
+                <div id="profile_o" class="flex-column profile_option oculto">
+                    <a class="flex profile_view" href="" class="">
+                        <img src="../img/profile.svg" alt="">
+                        Ver Perfil
+                    </a>
+                    <a class="flex exit_login" href="">
+                        <img src="../img/exit.svg" alt="">
+                        Cerrar Sesion
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="user_nav flex-column">
+            <a class="new_file" href="">+ Nuevo</a>
+            <a class="type_file" href="">Todo</a>
+            <a class="type_file" href="">Documentos</a>
+            <a class="type_file" href="">Imagenes</a>
+        </div>
+        <div class="user_body">
+            <ul>
+                <li>
+                    <h4 class="name">Nombre</h4>
+                    <h4 class="date">Fecha de Creacion</h4>
+                    <h4 class="type">Tipo Archivo</h4>
+                </li>
+                <li>
+                    <div class="flex name"><img src="../img/TypeFile/fileDocument.svg" alt=""><h4>Amigo</h4></div>
+                    <div class="date"><h4>07/04/2023</h4></div>
+                    <div class="type"><h4>Documento</h4></div>
+                </li>
+                <li>
+                    <div class="flex name"><img src="../img/TypeFile/fileVideo.png" alt=""><h4>Amigo</h4></div>
+                    <div class="date"><h4>07/04/2023</h4></div>
+                    <div class="type"><h4>Video</h4></div>
+                </li>
+                <li>
+                    <div class="flex name"><img src="../img/folder.png" alt=""><h4>Amigo</h4></div>
+                    <div class="date"><h4>07/04/2023</h4></div>
+                    <div class="type"><h4>Carpeta</h4></div>
+                </li>
+                <li>
+                    <div class="flex name"><img src="../img/TypeFile/fileImg.svg" alt=""><h4>Amigo</h4></div>
+                    <div class="date"><h4>07/04/2023</h4></div>
+                    <div class="type"><h4>Imagen</h4></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const profile = document.getElementById("profile");
+        const profileO = document.getElementById('profile_o');
+        profile.addEventListener('click', () => {
+            profileO.classList.toggle("oculto");
+        });
+        document.addEventListener('click', (event) => {
+            if (!profile.contains(event.target) && !profileO.contains(event.target)) {
+                profileO.classList.add("oculto");
+            }
+        });
+    </script>
+</body>
+
+</html>
