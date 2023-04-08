@@ -13,7 +13,13 @@
 <body>
   <div class="login-page">
     <div class="form">
-      <form action="/createUser" method="POST" enctype="application/x-www-form-urlencoded" class="<%=register%>-form">
+      <%if (signinMessage) {%>
+        <p><%= signinMessage %></p>
+      <% } %>
+      <%if (signupMessage) {%>
+        <p><%= signupMessage %></p>
+      <% } %>
+      <form action="/signup" method="POST" enctype="application/x-www-form-urlencoded" class="<%=register%>-form">
         <input type="text" placeholder="name" name="given_name" />
         <input type="text" placeholder="lastname" name="family_name" />
         <input type="password" placeholder="password" name="password"/>
@@ -24,8 +30,8 @@
         </button>
         <p class="message">Already registered? <a href="#">Sign In</a></p>
       </form>
-      <form  method="POST" enctype="application/x-www-form-urlencoded" class="<%=login%>-form">
-        <input type="text" placeholder="username" name="given_name"/>
+      <form  action="signin" method="POST" enctype="application/x-www-form-urlencoded" class="<%=login%>-form">
+        <input type="email" placeholder="email" name="email"/>
         <input type="password" placeholder="password" name="password"/>
         <input class="btn-enviar" style="background:green;" type="submit" value="login">
         <button type="button" onclick="window.location.href='/google'" class="login-with-google-btn" >

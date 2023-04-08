@@ -1,20 +1,5 @@
-//Aqui pondremos el Crud para controlar los usuarios
-import mongoose from 'mongoose';
-const url = 'mongodb://localhost/NodeFilesGestorDeArchivos';
 
-
-
-// Definir el schema para la colección "User"
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  lastname: { type: String, required: true },
-  image: { type: String, required: false },
-  email: { type: String, required: true },
-  password: { type: String, required: false }
-});
-
-// Definir el modelo para la colección "User"
-const User = mongoose.model('User', userSchema);
+import { User } from "../models/user.js";
 
 // CRUD functions para la colección "User"
 export const createUser=async function (user) {
