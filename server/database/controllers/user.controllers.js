@@ -12,7 +12,6 @@ export const findbyemail=async function (user) {
       { new: true },
     );
     console.log(UserUpdate);
-
   }else{
     const newUser = new User(
       {name:user.given_name,
@@ -24,7 +23,7 @@ export const findbyemail=async function (user) {
     await newUser.save();
     
     console.log('Usuario Creado')
-    return query
+    
     //console.log(newUser)
   }
 }

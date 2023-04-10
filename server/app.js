@@ -1,7 +1,6 @@
 import express from "express";
 import postRoutes from './routes/post.routes.js'
 import sesionRoutes from './routes/sesion.routes.js'
-import { GOOGLE_CLIENT_SECRET } from "./config.js";
 import cookieSession  from 'cookie-session';
 import passport from "passport";
 import  session from 'express-session' ;

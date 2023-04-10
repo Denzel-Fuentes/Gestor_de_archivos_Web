@@ -9,8 +9,12 @@ export const createFile =async function (req,res) {
     const email =req.session.passport.user.email
     const query =  await User.findOne({email:email })
     const file = req.files.file;
-    console.log("-------------------------------------------")
-    console.log(file)
+    console.log(" req sesionnnnnnn-------------------------------------------")
+    console.log(req.session.passport.user.email)
+    console.log(req.session.passport.user)
+    //console.log(file)
+    console.log("------------------------------------------")
+    console.log(query)
     const newFile = new File(
       {
         filename:file.name,
