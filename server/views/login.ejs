@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <link rel="icon" href="./img/logo.webp">
+<link rel="stylesheet" href="./css/1.css">
+
+</head>
+<body>
+  <div class="login-page">
+    <div class="form">
+      <%if (signinMessage) {%>
+        <p class="alert"><%= signinMessage %></p>
+      <% } %>
+      <%if (signupMessage) {%>
+        <p class="alert"><%= signupMessage %></p>
+      <% } %>
+      <form action="/signup" method="POST" enctype="application/x-www-form-urlencoded" class="<%=register%>-form">
+        <input type="text" placeholder="name" name="given_name" />
+        <input type="text" placeholder="lastname" name="family_name" />
+        <input type="password" placeholder="password" name="password"/>
+        <input type="text" placeholder="email address" name="email"/>
+        <input class="btn-enviar" type="submit" value="Create" style="background:green;">
+        <button onclick="window.location.href='/google'" type="button" class="login-with-google-btn" >
+          Sign in with Google
+        </button>
+        <p class="message">Already registered? <a href="#" class="text-l">Sign In</a></p>
+      </form>
+      <form  action="signin" method="POST" enctype="application/x-www-form-urlencoded" class="<%=login%>-form">
+        <input type="email" placeholder="email" name="email"/>
+        <input type="password" placeholder="password" name="password"/>
+        <input class="btn-enviar" style="background:green;" type="submit" value="login">
+        <button type="button" onclick="window.location.href='/google'" class="login-with-google-btn" >
+          Sign in with Google
+        </button>
+        <p class="message">Not registered? <a href="#" class="text-l">Create an account</a></p>
+      </form>
+    </div>
+   
+  </div>
+</body>
+
+
+<script src="./js/jquery.js"></script>
+<script>
+    $('.message a').click(function(){
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        $('.alert').text('');
+    });
+
+   
+
+  
+</script>
+</html>
