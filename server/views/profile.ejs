@@ -21,35 +21,37 @@
             </div>
             <div id="profile" class="flex head_profile">
                 <div class="flex">
-                   <h3>Perfil</h3>
+                    <h3>Perfil</h3>
                     <span class="profile_name"></span>
                 </div>
                 <div id="profile_o" class="flex-column profile_option oculto">
                     <%if (user.pic) {%>
                         <img class="img-user" src="<%= user.pic %>" alt="profile">
-                      <% }else{ %>
-                        <img class="img-user" src="./img/comunity.png" alt="profile">
-                        <% } %>
-                    
-                        <strong>Email</strong><%= user.email %> <br>
-                        <%if (user.name) {%>
-                            <strong>Nombre</strong><%= user.name%> <br>
-                        <% } %>
+                        <% }else{ %>
+                            <img class="img-user" src="./img/comunity.png" alt="profile">
+                            <% } %>
+
+                                <strong>Email</strong>
+                                <%= user.email %> <br>
+                                    <%if (user.name) {%>
+                                        <strong>Nombre</strong>
+                                        <%= user.name%> <br>
+                                            <% } %>
 
 
-                    <a class="flex exit_login" href="/logout">
-                        <img src="./img/exit.svg" alt="">
-                        Cerrar Sesion
-                    </a>
+                                                <a class="flex exit_login" href="/logout">
+                                                    <img src="./img/exit.svg" alt="">
+                                                    Cerrar Sesion
+                                                </a>
                 </div>
             </div>
         </div>
         <div class="user_nav flex-column">
             <!-- <a class="new_file" href="">+ Nuevo</a> -->
-            <input placeholder="Nuevo" id="new_file" type="file" name="file"  multiple="false" >
+            <input placeholder="Nuevo" id="new_file" type="file" name="file" multiple="false">
             <a class="type_file" href="/profile">Todo</a>
-            <a class="type_file" href="/section/application">Documentos</a>
-            <a class="type_file" href="/section/image">Imagenes</a>
+            <a class="type_file" onclick="filtrar('application')" >Documentos</a>
+            <a class="type_file" onclick="filtrar('image')">Imagenes</a>
         </div>
         <div class="user_body">
             <ul>
@@ -59,35 +61,47 @@
                     <h4 class="type">Tipo Archivo</h4>
                     <h4>Eliminar</h4>
                 </li>
-                <% if (files) { %>
+                <% if (files.length>0) { %>
                     <% for(var i=0; i<files.length; i++) { %>
-                        <%  
-                            const fechaActual = new Date(Date.parse(files[i].date));
-                            const anio = fechaActual.getUTCFullYear();
-                            const mes = ('0' + (fechaActual.getUTCMonth() + 1)).slice(-2);
-                            const dia = ('0' + fechaActual.getUTCDate()).slice(-2);
-                            const fecha = `${dia}-${mes}-${anio}`; 
-                        %>
-                        <li>
-                            <div class="flex name"><img <%if(files[i].filetype == 'image'){%>
-                              src="./img/TypeFile/image.svg"
-                            <% }else{ %>
-                              src="./img/TypeFile/<%= files[i].filetype %>.svg"
+                        <% const fechaActual=new Date(Date.parse(files[i].date)); const
+                            anio=fechaActual.getUTCFullYear(); const mes=('0' + (fechaActual.getUTCMonth() +
+                            1)).slice(-2); const dia=('0' + fechaActual.getUTCDate()).slice(-2); const
+                            fecha=`${dia}-${mes}-${anio}`; %>
+                            <li>
+                                <div class="flex name"><img <%if(files[i].filetype=='image' ){%>
+                                    src="./img/TypeFile/image.svg"
+                                    <% }else{ %>
+                                        src="./img/TypeFile/<%= files[i].filetype %>.svg"
+                                            <% } %>
+                                                alt=""><a class="download" href="/descargar/<%=files[i]._id %>"
+                                                    download>
+                                                    <h4>
+                                                        <%= files[i].filename %>
+                                                    </h4>
+                                                </a>
+                                </div>
+                                <div class="date">
+                                    <h4>
+                                        <%= fecha %>
+                                    </h4>
+                                </div>
+                                <div class="type">
+                                    <h4>
+                                        <%= files[i].filetype %>
+                                    </h4>
+                                </div>
+                                <div><a href="/deleteFile/<%=files[i]._id %>"><img class="delete" width="50"
+                                            src="./img/borrar.png" alt="" srcset=""> </a></div>
+                            </li>
+
                             <% } %>
-                            alt=""><a class="download" href="/descargar/<%=files[i]._id %>" download><h4><%= files[i].filename %></h4></a></div>
-                            <div class="date"><h4> <%= fecha %> </h4></div>
-                            <div class="type"><h4><%= files[i].filetype %> </h4></div>
-                            <div><a href="/deleteFile/<%=files[i]._id %>"><img class="delete" width="50" src="./img/borrar.png" alt="" srcset=""> </a></div>
-                         </li>
-    
-                    <% } %>
-    
-                <%  } else {%>
-                    <h2>No hay archivos de este tipo</h2>
-                <% } %>
-                
+
+                                <% } else {%>
+                                    <h2>No hay archivos de este tipo</h2>
+                                    <% } %>
+
             </ul>
-            
+
         </div>
     </div>
     <script>
@@ -104,21 +118,70 @@
         });
         const fileInput = document.getElementById("new_file")
 
-		fileInput.addEventListener('change', () => {
-			const file = fileInput.files[0];
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
 
-			const formData = new FormData();
-			formData.append('file', file);
+            const formData = new FormData();
+            formData.append('file', file);
 
-			fetch('/Archivo', {
-				method: 'POST',
-				body: formData
-			}).catch(error => {
-				// manejar el error
-				console.error("No se envio el archivo");
-			});
-            location.reload();
-		});
+            fetch('/Archivo', {
+                method: 'POST',
+                body: formData
+            }).catch(error => {
+                // manejar el error
+                console.error("No se envio el archivo");
+            });
+            location.reload();req.session.passport.user
+        });
+
+        function filtrar(filtro) {
+            fetch('/filtrar?filtro=' + encodeURIComponent(filtro))
+                .then(response => response.json())
+                .then(datosFiltrados => {
+                    // Actualiza la página con los datos filtrados
+                    const lista = document.querySelector('.user_body');
+                    lista.innerHTML = '';
+                    const ul = `
+                    <li>
+                    <h4 class="name">Nombre</h4>
+                    <h4 class="date">Fecha de Creacion</h4>
+                    <h4 class="type">Tipo Archivo</h4>
+                    <h4>Eliminar</h4>
+                    </li>
+                    `
+                    lista.innerHTML+=ul;
+                    console.log(datosFiltrados);
+                    datosFiltrados.forEach(function (dato) {
+                     
+                        const fechaActual = new Date(Date.parse(dato.date)); 
+                        const anio = fechaActual.getUTCFullYear(); 
+                        const mes = ('0' + (fechaActual.getUTCMonth() +1)).slice(-2); 
+                        const dia = ('0' + fechaActual.getUTCDate()).slice(-2); 
+                        const fecha = `${dia}-${mes}-${anio}`;
+                        
+                        const item = `
+                             <li>
+                                <div class="flex name"><img src="./img/TypeFile/${dato.filetype}.svg" alt="">
+                                    <a class="download" href="/descargar/${dato._id}"download><h4>${dato.filename} </h4></a>
+                                </div>
+                                <div class="date">
+                                    <h4>
+                                        ${fecha} 
+                                    </h4>
+                                </div>
+                                <div class="type">
+                                    <h4>
+                                         ${dato.filetype}
+                                    </h4>
+                                </div>
+                                <div><a href="/deleteFile/${dato._id}"><img class="delete" width="50"
+                                            src="./img/borrar.png" alt="" srcset=""> </a></div>
+                            </li>                
+                        `
+                        lista.innerHTML+=item;
+                    });
+                });
+        };
     </script>
 </body>
 

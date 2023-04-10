@@ -2,13 +2,14 @@ import passport from "passport";
 import { Router } from "express";
 import { Google,GoogleAu,RespuestaGoogle} from "../controllers/sesionGoogle.js";
 const router = Router();
-import {findbyemail} from  "../database/controllers/user.controllers.js";
+import { findbyemail } from "../database/controllers/user.controllers.js";
 import { findFilesById ,findFileType } from "../database/controllers/files.controllers.js";
 import { User} from "../database/models/user.js";
-
+import { File } from "../database/models/files.js";
 //Iniciar session con google o crear cuenta
-router.get('/success',(req,res)=>{
-  res.redirect('/profile');
+router.get('/success',async (req,res)=>{
+  await findbyemail(req.session.passport.user)
+  res.redirect('profile')
 });
 
 router.get('/google',Google );
@@ -37,7 +38,8 @@ router.post('/signup', passport.authenticate('local-signup', {
     failureRedirect: '/signin',
     failureFlash: true
 }));
-  
+
+
 router.get('/profile',isAuthenticated, async (req, res, next) => {
     //console.log(req.session.passport.user.picture)
     const email = req.session.passport.user.email
@@ -57,7 +59,17 @@ router.get('/profile',isAuthenticated, async (req, res, next) => {
     res.redirect('/');
 });
   
-  
+router.get('/filtrar',async(req,res)=>{
+  const filtro = req.query.filtro;
+  console.log(req.query)
+  const id = await User.find({email:req.session.passport.user.email},{_id:1})
+  const datosfiltrados = await File.find({id_user:id,filetype:filtro},{_id:1,filename:1,filetype:1,date:1})
+  console.log("----------------------------------------")
+
+  console.log(datosfiltrados);
+  res.json(datosfiltrados);
+})
+
 function isAuthenticated(req, res, next) {
     if(req.isAuthenticated()) {
       return next();
