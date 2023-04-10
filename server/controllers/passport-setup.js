@@ -1,4 +1,4 @@
-import { GOOGLE_CLIENT_ID , GOOGLE_CALLBACK_URL, GOOGLE_CLIENT_SECRET } from './config.js';
+import { GOOGLE_CLIENT_ID , GOOGLE_CALLBACK_URL, GOOGLE_CLIENT_SECRET } from '../config.js';
 import passport from 'passport';
 import GoogleStrategy from 'passport-google-oauth2'
 GoogleStrategy.Strategy;

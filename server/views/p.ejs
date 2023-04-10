@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,9 +20,15 @@
                 <div class="well h3 text-danger"><span class="fa fa-google-plus"></span> </div>
     
                 <p>
-                    <strong>email</strong>:<%=email%> <br>
-                    <strong>name</strong>:<%=name%> <br>
-                    <strong>pic</strong>:<img src="<%=pic%>" width="100">
+                    
+                    <strong>email</strong>:<%= user.email %> <br>
+                    <%if (user.name) {%>
+                        <strong>name</strong>:<%= user.name%> <br>
+                      <% } %>
+                      <%if (user.pic) {%>
+                        <strong>pic</strong>:<img src="<%= user.pic %>" width="100">
+                      <% } %>
+                    
     
     
                 </p>
@@ -44,6 +51,20 @@
                     <input type="button" value="MERGE" id="mergeButton" onclick="doMesh()">
                   </div>
             </div>
+        </div>
+        <div class="row">
+            <ul>
+                <% for(var i=0; i<files.length; i++) { %>
+                    <%  
+                        const fechaActual = new Date(Date.parse(files[i].date));
+                        const anio = fechaActual.getUTCFullYear();
+                        const mes = ('0' + (fechaActual.getUTCMonth() + 1)).slice(-2);
+                        const dia = ('0' + fechaActual.getUTCDate()).slice(-2);
+                        const fecha = `${anio}-${mes}-${dia}`; 
+                    %>
+                  <li>Nombre: <%= files[i].filename %>, tamaño: <%= files[i].size %>KB , date <%= fecha %></li>
+                <% } %>
+            </ul> 
         </div>
 
     </div>

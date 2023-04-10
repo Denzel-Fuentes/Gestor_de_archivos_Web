@@ -1,4 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+.alert{
+  background-color: #ffa1a1;
+  
+}
 
 .login-page {
   width: 360px;

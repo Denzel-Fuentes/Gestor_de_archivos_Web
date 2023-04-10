@@ -24,7 +24,7 @@ app.use(fileUpload());
 //convierte la informacion recibida en un objeto
 app.use(express.urlencoded({extended: true}));
 
-import  './passport-setup.js';
+import  './controllers/passport-setup.js';
 import './controllers/local-auth.js'
 //Configuracion para  el inicio de sesion
 

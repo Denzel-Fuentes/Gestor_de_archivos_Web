@@ -59,11 +59,14 @@ a {
     cursor: pointer;
 }
 .head_profile img {
-    width: 50px;
-    height: 50px;
+    width: 25%;
+    height: 25%;
     border-radius: 50%;
     border: 1px solid #646464;
 }
+.img-user{
+    width: 300px;
+  }
 
 .head_profile .profile_name,
 a {
@@ -88,7 +91,7 @@ a {
     padding: 0.5rem;
     top: 80px;
     right: 30px;
-    width: 200px;
+    width: auto;
     border-radius: 1rem;
     box-shadow: #0000003d 0px 3px 8px 3px;
 }
@@ -113,7 +116,7 @@ a {
     grid-area: user_nav;
     padding: 1rem;
 }
-.user_nav .new_file{
+.user_nav #new_file{
     background-color: #6CB3F4;
     border-radius: 1rem;
     color: #ffffff;
@@ -129,11 +132,11 @@ a {
     border-radius: 10px;
     padding: 0.5rem;
 }
-.new_file, 
+#new_file, 
 .type_file{
     animation: transform 500ms linear;
 }
-.new_file:hover, 
+#new_file:hover, 
 .type_file:hover{
     transform: scale(1.05);
 }
@@ -198,7 +201,7 @@ h4{
         font-size: 1.1vw;
     }
     .head_profile .profile_option{
-        width: 300px;
+        width: auto;
         align-items: center;
     }
     .user_body .name{
@@ -211,3 +214,25 @@ h4{
         flex-basis: 10%;
     }
 }
+/* Ocultar el texto predeterminado del input */
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  
+  /* Mostrar el texto personalizado del placeholder */
+  input[type="file"]::before {
+    content: attr(placeholder);
+    font-family: inherit;
+    font-size: 30px;
+    color: #110e0e;
+    margin-left: 35px;
+    
+  }
+  .download:hover{
+    color: rgb(27, 197, 69);
+  }
+  .delete:hover{
+    cursor: pointer;
+    transition: 1s;
+    width: 60px;
+  }

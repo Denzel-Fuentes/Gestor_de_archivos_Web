@@ -14,10 +14,10 @@
   <div class="login-page">
     <div class="form">
       <%if (signinMessage) {%>
-        <p><%= signinMessage %></p>
+        <p class="alert"><%= signinMessage %></p>
       <% } %>
       <%if (signupMessage) {%>
-        <p><%= signupMessage %></p>
+        <p class="alert"><%= signupMessage %></p>
       <% } %>
       <form action="/signup" method="POST" enctype="application/x-www-form-urlencoded" class="<%=register%>-form">
         <input type="text" placeholder="name" name="given_name" />
@@ -28,7 +28,7 @@
         <button onclick="window.location.href='/google'" type="button" class="login-with-google-btn" >
           Sign in with Google
         </button>
-        <p class="message">Already registered? <a href="#">Sign In</a></p>
+        <p class="message">Already registered? <a href="#" class="text-l">Sign In</a></p>
       </form>
       <form  action="signin" method="POST" enctype="application/x-www-form-urlencoded" class="<%=login%>-form">
         <input type="email" placeholder="email" name="email"/>
@@ -37,7 +37,7 @@
         <button type="button" onclick="window.location.href='/google'" class="login-with-google-btn" >
           Sign in with Google
         </button>
-        <p class="message">Not registered? <a href="#">Create an account</a></p>
+        <p class="message">Not registered? <a href="#" class="text-l">Create an account</a></p>
       </form>
     </div>
    
@@ -48,7 +48,12 @@
 <script src="./js/jquery.js"></script>
 <script>
     $('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        $('.alert').text('');
+    });
+
+   
+
+  
 </script>
 </html>
